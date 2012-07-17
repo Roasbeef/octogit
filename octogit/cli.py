@@ -12,7 +12,8 @@ from clint import args
 from clint.textui import colored, puts, indent
 
 from .core import (get_issues, get_single_issue, create_repository,
-                   close_issue, view_issue, create_issue, find_github_remote)
+                   close_issue, view_issue, create_issue, find_github_remote,
+                   delete_gist)
 from .config import login, create_config, commit_changes, CONFIG_FILE
 
 
@@ -39,6 +40,7 @@ def get_help():
         puts(colored.green('octogit issues <number>'))
         puts(colored.green('octogit issues <number> close'))
         puts(colored.green('octogit issues <number> view'))
+        puts(colored.green('octogit gists delete <number>'))
         puts('\n')
 
 
@@ -146,6 +148,15 @@ def begin():
             password = getpass.getpass("Password for %s: " % username)
 
         login(username, password)
+
+    elif args.get(0) == 'gists':
+        if args.get(1) == 'delete':
+            if args.get(2) is None:
+                puts('{0}. {1}'.format(colored.blue('octogit'),
+                    colored.red('You need to pass a gist number to delete')))
+            else:
+                gist_id = args.get(2)
+                delete_gist(gist_id)
     else:
         get_help()
         sys.exit(0)

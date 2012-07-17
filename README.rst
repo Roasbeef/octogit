@@ -38,6 +38,9 @@ Available commands. ::
     octogit issues <number> close 
     # lets you close an issue
 
+    octogit gists delete <number>
+    # lets you delete a gist
+
 
 Contribute
 ==========

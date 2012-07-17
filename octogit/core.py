@@ -288,3 +288,18 @@ def create_issue(user, repo, issue_name, description):
         puts('{0}. {1}'.format(colored.blue('octogit'),
             colored.red('something went wrong. perhaps you need to login?')))
         sys.exit(-1)
+
+
+def delete_gist(gist_id):
+    delete_url = 'https://api.github.com/gists/%s' % (gist_id)
+    username = get_username()
+    password = get_password()
+
+    r = requests.delete(delete_url, auth=(username, password))
+    if r.status_code == 204:
+        puts('{0}. {1}'.format(colored.blue('octogit'),
+            colored.green('gist deleted successfully')))
+    else:
+        puts('{0}. {1}'.format(colored.blue('octogit'),
+            colored.red("You either passed a gist that isn't yours or you need to login in silly.")))
+        sys.exit(-1)
