@@ -301,7 +301,7 @@ def delete_gist(gist_id):
             colored.green('gist deleted successfully')))
     else:
         puts('{0}. {1}'.format(colored.blue('octogit'),
-            colored.red("You either passed a gist that isn't yours or you need to login in silly.")))
+            colored.red("You either passed a gist that isn't yours or you need to login silly.")))
         sys.exit(-1)
 
 

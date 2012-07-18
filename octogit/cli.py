@@ -41,7 +41,7 @@ def get_help():
         puts(colored.green('octogit issues <number> close'))
         puts(colored.green('octogit issues <number> view'))
         puts(colored.green('octogit gists delete <number>'))
-        puts(colored.green("octogit gists create <file1> <file2> <fileN> 'description'"))
+        puts(colored.green('octogit gists create <file1> <file2> <fileN> <description>'))
         puts('\n')
 
 
@@ -162,7 +162,7 @@ def begin():
         elif args.get(1) == 'create':
             if not args.files:
                 puts('{0}. {1}'.format(colored.blue('octogit'),
-                    colored.red('You need to pass files aswell to create a gist')))
+                    colored.red('You need to pass files as well to create a gist')))
             else:
                 description = args.not_files.get(2) or ''
                 files = args.files
