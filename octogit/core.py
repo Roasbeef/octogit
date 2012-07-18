@@ -312,8 +312,7 @@ def create_gist(files, description):
 
     post_dict = {'description': description, 'public': True}
     file_name = lambda x: x.split('/')[-1]
-    file_string = lambda x: open(file_name(x)).read()
-    post_dict['files'] = dict((file_name(file), {'content': file_string(file)}) for file in files)
+    post_dict['files'] = dict((file_name(file), {'content': open(file).read()}) for file in files)
 
     r = requests.post(post_url, auth=(username, password), data=json.dumps(post_dict))
     if r.status_code == 201:
