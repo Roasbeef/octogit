@@ -41,7 +41,7 @@ def get_help():
         puts(colored.green('octogit issues <number> close'))
         puts(colored.green('octogit issues <number> view'))
         puts(colored.green('octogit gists delete <number>'))
-        puts(colored.green('octogit gists create <file1> <file2> <fileN> <description>'))
+        puts(colored.green("octogit gists create <file1> <file2> <fileN> 'description'"))
         puts('\n')
 
 

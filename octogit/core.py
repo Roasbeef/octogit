@@ -298,7 +298,7 @@ def delete_gist(gist_id):
     r = requests.delete(delete_url, auth=(username, password))
     if r.status_code == 204:
         puts('{0}. {1}'.format(colored.blue('octogit'),
-            colored.green('gist deleted successfully')))
+            colored.green('gist: %s deleted successfully' % gist_id)))
     else:
         puts('{0}. {1}'.format(colored.blue('octogit'),
             colored.red("You either passed a gist that isn't yours or you need to login silly.")))
@@ -316,8 +316,9 @@ def create_gist(files, description):
 
     r = requests.post(post_url, auth=(username, password), data=json.dumps(post_dict))
     if r.status_code == 201:
+        post_resp = json.loads(r.content)
         puts('{0}. {1}'.format(colored.blue('octogit'),
-            colored.green('gist created successfully')))
+            colored.green('gist: %s created successfully' % post_resp['id'])))
     else:
         puts('{0}. {1}'.format(colored.blue('octogit'),
             colored.red('You need to login to create a gist')))
