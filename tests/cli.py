@@ -29,7 +29,7 @@ class ErrorMessageTest(unittest.TestCase):
     def test_invalid_file(self):
         """
         Tests that a non-existant file raises
-        promt to pass files
+        error message to pass files
         """
         cmd = ['octogit', 'gists', 'create', 'doesnt_exist.txt']
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
